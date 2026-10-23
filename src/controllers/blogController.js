@@ -42,4 +42,12 @@
     };
   });
 
+  // Carrega uma história conhecida ou deixa o HTML apresentar o estado vazio.
+  app.controller('ArticleController', function () {
+    const id = new URLSearchParams(window.location.search).get('id');
+    this.article = window.cityguideArticles.find((article) => article.id === id);
+    document.title = this.article
+      ? `${this.article.title} | Cityguide`
+      : 'História não encontrada | Cityguide';
+  });
 })();

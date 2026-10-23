@@ -1,0 +1,156 @@
+<!doctype html>
+<!--
+  Página de leitura. O parâmetro id identifica uma história do arquivo articles.js.
+  ArticleController valida esse id e mostra uma mensagem quando ele não existe.
+  Textos são exibidos pelas diretivas, sem inserir HTML dos dados na página.
+-->
+<html
+  lang="pt-BR"
+  ng-app="cityguide"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>História | Cityguide</title>
+    <link
+      rel="icon"
+      href="assets/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendor/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="src/styles/global.css"
+    />
+    <link
+      rel="stylesheet"
+      href="src/styles/article.css"
+    />
+    <script
+      defer
+      src="assets/vendor/angular.min.js"
+    ></script>
+    <script
+      defer
+      src="src/data/articles.js"
+    ></script>
+    <script
+      defer
+      src="src/controllers/blogController.js"
+    ></script>
+  </head>
+  <body ng-controller="ArticleController as page">
+    <a
+      class="skip-link"
+      href="#conteudo"
+    >
+      Pular para o conteúdo
+    </a>
+    <header class="site-header">
+      <div class="shell header-content">
+        <a
+          class="brand"
+          href="index.html"
+        >
+          <span
+            class="brand-icon"
+            aria-hidden="true"
+          >
+            ▥
+          </span>
+          CITYGUIDE
+          <span class="brand-dot">.</span>
+        </a>
+        <a
+          class="back-link"
+          href="index.html#guias"
+        >
+          ← Todas as histórias
+        </a>
+      </div>
+    </header>
+    <main
+      id="conteudo"
+      class="shell reading-page"
+      ng-cloak
+    >
+      <article ng-if="page.article">
+        <header class="article-header">
+          <p class="eyebrow dark-eyebrow">
+            {{page.article.city}} · {{page.article.category}}
+          </p>
+          <h1>{{page.article.title}}</h1>
+          <p class="article-intro">{{page.article.description}}</p>
+          <p class="reading-meta">
+            Redação Cityguide · {{page.article.minutes}} min de leitura
+          </p>
+        </header>
+        <figure>
+          <img
+            class="article-cover"
+            ng-src="{{page.article.image}}"
+            alt="{{page.article.alt}}"
+            width="1200"
+            height="800"
+          />
+          <figcaption>{{page.article.city}} · Fotografia ilustrativa</figcaption>
+        </figure>
+        <div class="article-body">
+          <p class="editorial-note">
+            Roteiro editorial ilustrativo. Confira horários e condições dos locais antes
+            de viajar.
+          </p>
+          <section ng-repeat="section in page.article.sections">
+            <h2>{{section.title}}</h2>
+            <p>{{section.text}}</p>
+          </section>
+          <div class="article-end">
+            <p>Há sempre mais uma rua para descobrir.</p>
+            <a
+              class="text-link"
+              href="index.html#guias"
+            >
+              Explore outras histórias ↗
+            </a>
+          </div>
+        </div>
+      </article>
+      <section
+        class="missing"
+        ng-if="!page.article"
+      >
+        <p class="eyebrow dark-eyebrow">CAMINHO NÃO ENCONTRADO</p>
+        <h1>Esta história ainda não está no mapa.</h1>
+        <p>O link pode estar incorreto. Volte para escolher outro destino.</p>
+        <a
+          class="orange-button"
+          href="index.html"
+        >
+          Voltar ao início ↗
+        </a>
+      </section>
+    </main>
+    <noscript>
+      <p class="shell">Ative o JavaScript para carregar a história.</p>
+    </noscript>
+    <footer class="site-footer">
+      <div class="shell footer-content">
+        <a
+          class="brand"
+          href="index.html"
+        >
+          CITYGUIDE
+          <span class="brand-dot">.</span>
+        </a>
+        <p>Um novo olhar para o caminho.</p>
+        <span>Projeto acadêmico · 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
