@@ -38,7 +38,7 @@
       const categoryMatches =
         blog.category === 'Todos' || article.category === blog.category;
       const text = [article.city, article.title, article.description].join(' ');
-      return categoryMatches;
+      return categoryMatches && normalize(text).includes(normalize(blog.query));
     };
   });
 

@@ -202,7 +202,18 @@
             <p class="eyebrow dark-eyebrow">SEU PRÓXIMO CAPÍTULO</p>
             <h2 id="guides-title">Por onde vamos?</h2>
           </div>
-
+          <label
+            class="search-box"
+            for="search"
+          >
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="search"
+              type="search"
+              ng-model="blog.query"
+              placeholder="Busque uma cidade ou história"
+            />
+          </label>
         </div>
         <div
           class="filters"
