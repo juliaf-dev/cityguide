@@ -1,1 +1,164 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cityguide</title></head><body><main><h1>Cityguide</h1><p>Um novo olhar para a Europa.</p></main></body></html>
+<!doctype html>
+<!--
+  Página inicial do Cityguide. AngularJS liga os filtros aos artigos.
+  O controller fica em src/controllers e os estilos em src/styles.
+  As imagens e bibliotecas são locais para permitir estudar sem CDN.
+-->
+<html
+  lang="pt-BR"
+  ng-app="cityguide"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta
+      name="description"
+      content="Um blog de viagens pela Europa: cidades, passeios e sabores para inspirar seu próximo roteiro."
+    />
+    <title>Cityguide — Um novo olhar para a Europa</title>
+    <link
+      rel="icon"
+      href="assets/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendor/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="src/styles/global.css"
+    />
+    <link
+      rel="stylesheet"
+      href="src/styles/home.css"
+    />
+    <script
+      defer
+      src="assets/vendor/angular.min.js"
+    ></script>
+<script
+      defer
+      src="src/controllers/blogController.js"
+    ></script>
+  </head>
+  <body ng-controller="BlogController as blog">
+    <a
+      class="skip-link"
+      href="#conteudo"
+    >
+      Pular para o conteúdo
+    </a>
+    <header class="site-header">
+      <div class="shell header-content">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="Cityguide, início"
+        >
+          <span
+            class="brand-icon"
+            aria-hidden="true"
+          >
+            ▥
+          </span>
+          CITYGUIDE
+          <span class="brand-dot">.</span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          ng-click="blog.menuOpen = !blog.menuOpen"
+          ng-attr-aria-expanded="{{blog.menuOpen}}"
+          aria-controls="navigation"
+        >
+          Menu ☰
+        </button>
+        <nav
+          id="navigation"
+          class="main-nav"
+          ng-class="{'is-open': blog.menuOpen}"
+          aria-label="Principal"
+        >
+          <a
+            href="#guias"
+            ng-click="blog.choose('Todos')"
+          >
+            Explore as cidades
+          </a>
+          <a
+            href="#guias"
+            ng-click="blog.choose('Gastronomia')"
+          >
+            Onde comer
+          </a>
+          <a href="#sobre">Sobre o blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <section
+      class="hero"
+      aria-labelledby="hero-title"
+    >
+      <div class="shell hero-content">
+        <p class="eyebrow">MENOS PRESSA. MAIS DESCOBERTAS.</p>
+        <h1 id="hero-title">
+          Grandes cidades.
+          <br />
+          Pequenas descobertas.
+        </h1>
+        <p class="hero-description">
+          Um novo olhar para a Europa, uma rua de cada vez.
+        </p>
+        <a
+          class="orange-button"
+          href="#guias"
+        >
+          Encontre seu próximo destino
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="shell hero-bottom">
+        <p>
+          UM CONTINENTE.
+          <br />
+          <strong>INFINITAS HISTÓRIAS.</strong>
+        </p>
+        <a href="artigo.html?id=praga">
+          01
+          <span>Praga, além dos cartões-postais</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="artigo.html?id=budapeste">
+          02
+          <span>Às margens do Danúbio</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="artigo.html?id=roma">
+          03
+          <span>Uma mesa em Roma</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+<main id="conteudo" class="shell"><h2>Histórias em breve</h2></main>
+    <footer class="site-footer">
+      <div class="shell footer-content">
+        <a
+          class="brand"
+          href="index.html"
+        >
+          CITYGUIDE
+          <span class="brand-dot">.</span>
+        </a>
+        <p>Um novo olhar para o caminho.</p>
+        <span>Projeto acadêmico · 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
