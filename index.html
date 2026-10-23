@@ -40,7 +40,11 @@
       defer
       src="assets/vendor/angular.min.js"
     ></script>
-<script
+    <script
+      defer
+      src="src/data/articles.js"
+    ></script>
+    <script
       defer
       src="src/controllers/blogController.js"
     ></script>
@@ -146,7 +150,128 @@
       </div>
     </section>
 
-<main id="conteudo" class="shell"><h2>Histórias em breve</h2></main>
+    <main
+      id="conteudo"
+      class="shell"
+    >
+      <div class="section-note">
+        <span>Histórias para inspirar seu próximo caminho</span>
+        <span>EST. 2026</span>
+      </div>
+      <section
+        class="featured"
+        aria-labelledby="featured-title"
+      >
+        <div class="featured-copy">
+          <p class="eyebrow dark-eyebrow">EM DESTAQUE · ROTEIROS</p>
+          <h2 id="featured-title">Sua primeira vez em Praga começa aqui.</h2>
+          <p>
+            Ruas de pedra, torres que recortam o céu e pequenas pausas pelo caminho. Um
+            roteiro de dois dias para conhecer a cidade no seu ritmo.
+          </p>
+          <a
+            class="text-link"
+            href="artigo.html?id=praga"
+          >
+            Leia o roteiro completo
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <a
+          class="featured-image"
+          href="artigo.html?id=praga"
+          aria-label="Ler roteiro de Praga"
+        >
+          <img
+            src="assets/images/praga.jpg"
+            alt="Vista dos telhados históricos de Praga"
+            width="1200"
+            height="800"
+          />
+          <span class="image-caption">PRAGA, REPÚBLICA TCHECA</span>
+        </a>
+      </section>
+
+      <section
+        id="guias"
+        class="guides"
+        aria-labelledby="guides-title"
+      >
+        <div class="guides-heading">
+          <div>
+            <p class="eyebrow dark-eyebrow">SEU PRÓXIMO CAPÍTULO</p>
+            <h2 id="guides-title">Por onde vamos?</h2>
+          </div>
+
+        </div>
+
+        <div
+          class="article-grid"
+          ng-cloak
+        >
+          <article
+            class="story"
+            ng-repeat="article in blog.articles | filter:blog.matches"
+          >
+            <a
+              class="story-image"
+              ng-href="artigo.html?id={{article.id}}"
+              aria-label="Ler {{article.title}}"
+            >
+              <img
+                ng-src="{{article.image}}"
+                alt="{{article.alt}}"
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+              <span>{{article.city}}</span>
+            </a>
+            <p class="story-meta">
+              {{article.category}}
+              <span>· {{article.minutes}} min de leitura</span>
+            </p>
+            <h3><a ng-href="artigo.html?id={{article.id}}">{{article.title}}</a></h3>
+            <p class="story-description">{{article.description}}</p>
+            <a
+              class="story-link"
+              ng-href="artigo.html?id={{article.id}}"
+            >
+              Continue explorando
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+        <p
+          class="empty-message"
+          ng-if="!(blog.articles | filter:blog.matches).length"
+          ng-cloak
+        >
+          Nenhuma história encontrada. Experimente outra palavra ou categoria.
+        </p>
+        <noscript>
+          <p>Ative o JavaScript para explorar e filtrar as histórias.</p>
+        </noscript>
+      </section>
+      <section
+        id="sobre"
+        class="about"
+      >
+        <p class="eyebrow dark-eyebrow">O JEITO CITYGUIDE DE VIAJAR</p>
+        <h2>O melhor da viagem pode estar no caminho.</h2>
+        <p>
+          Um blog de estudo sobre cidades, cultura e gastronomia. Roteiros ilustrativos
+          para despertar a curiosidade, sem a pressa de conhecer tudo.
+        </p>
+        <a
+          class="text-link"
+          href="#guias"
+        >
+          Escolha uma história
+          <span aria-hidden="true">↑</span>
+        </a>
+      </section>
+    </main>
     <footer class="site-footer">
       <div class="shell footer-content">
         <a
