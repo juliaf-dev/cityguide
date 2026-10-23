@@ -204,7 +204,27 @@
           </div>
 
         </div>
-
+        <div
+          class="filters"
+          aria-label="Filtrar histórias"
+          ng-cloak
+        >
+          <button
+            type="button"
+            ng-repeat="category in blog.categories"
+            ng-click="blog.choose(category)"
+            ng-class="{'selected': blog.category === category}"
+            ng-attr-aria-pressed="{{blog.category === category}}"
+          >
+            {{category}}
+          </button>
+          <span
+            class="result-count"
+            role="status"
+          >
+            {{(blog.articles | filter:blog.matches).length}} histórias
+          </span>
+        </div>
         <div
           class="article-grid"
           ng-cloak
